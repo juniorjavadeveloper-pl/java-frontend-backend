@@ -30,6 +30,6 @@ public class NoteController {
     public String create(NoteModel noteModel) {
         LOGGER.info("create(" + noteModel + ")");
         notes.add(noteModel);
-        return "redirect:notes/notes";
+        return "redirect:/notes";
     }
 }
