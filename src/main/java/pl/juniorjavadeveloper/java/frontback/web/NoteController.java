@@ -1,6 +1,7 @@
 package pl.juniorjavadeveloper.java.frontback.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,9 @@ public class NoteController {
     }
 
     @GetMapping(value = "/create")
-    public String createView() {
+    public String createView(ModelMap modelMap) {
+        NoteModel noteModel = new NoteModel();
+        modelMap.addAttribute("note", noteModel);
         return "notes/create-note";
     }
 

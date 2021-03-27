@@ -8,6 +8,9 @@ public class NoteModel {
     @NotBlank(message = "Content must not be blank")
     private String content;
 
+    public NoteModel() {
+    }
+
     public NoteModel(String title, String content) {
         this.title = title;
         this.content = content;
