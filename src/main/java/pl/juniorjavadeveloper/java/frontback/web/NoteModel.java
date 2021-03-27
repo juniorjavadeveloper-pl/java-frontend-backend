@@ -1,7 +1,11 @@
 package pl.juniorjavadeveloper.java.frontback.web;
 
+import javax.validation.constraints.NotBlank;
+
 public class NoteModel {
+    @NotBlank(message = "Title must not be blank")
     private String title;
+    @NotBlank(message = "Content must not be blank")
     private String content;
 
     public NoteModel(String title, String content) {

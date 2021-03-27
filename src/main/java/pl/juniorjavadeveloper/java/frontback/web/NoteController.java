@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ public class NoteController {
     }
 
     @PostMapping
-    public String create(NoteModel noteModel) {
+    public String create(@Valid NoteModel noteModel) {
         LOGGER.info("create(" + noteModel + ")");
         notes.add(noteModel);
         return "redirect:/notes";
