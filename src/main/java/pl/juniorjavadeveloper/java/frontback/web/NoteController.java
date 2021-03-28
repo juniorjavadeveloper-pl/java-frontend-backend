@@ -2,7 +2,9 @@ package pl.juniorjavadeveloper.java.frontback.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,8 +33,16 @@ public class NoteController {
     }
 
     @PostMapping
-    public String create(@Valid NoteModel noteModel) {
+    public String create(@Valid @ModelAttribute(name = "note") NoteModel noteModel,
+                         BindingResult bindingResult) {
         LOGGER.info("create(" + noteModel + ")");
+
+        if (bindingResult.hasErrors()) {
+            LOGGER.info("validation errors in Model: " + noteModel);
+            LOGGER.info("validation errors: " + bindingResult.getAllErrors());
+            return "notes/create-note";
+        }
+
         notes.add(noteModel);
         return "redirect:/notes";
     }

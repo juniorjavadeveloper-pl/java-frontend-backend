@@ -8,7 +8,9 @@
 <h1>Create note</h1>
 <form action="#" th:action="@{/notes}" th:object="${note}" method="post">
     <input type="text" th:field="${note.title}">
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
     <input type="text" th:field="${note.content}">
+    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
     <button type="submit">Save</button>
 </form>
 </body>
